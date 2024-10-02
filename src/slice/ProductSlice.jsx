@@ -268,12 +268,15 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+let baseURL ='https://json-server-deployment-y10f.onrender.com/products'
+// let baseURL='http://localhost:3000/products'
+
 // Async thunk to create a product
 export const createProduct = createAsyncThunk(
   "product/createProduct",
   async (product) => {
     try {
-      let res = await axios.post("http://localhost:3000/products", product);
+      let res = await axios.post(`${baseURL}`, product);
       return res.data;
     } catch (error) {
       console.log(error);
@@ -310,7 +313,7 @@ export const createExcelProduct = createAsyncThunk(
 // Async thunk to get products
 export const getProduct = createAsyncThunk("product/getProduct", async () => {
   try {
-    let res = await axios.get("http://localhost:3000/products");
+    let res = await axios.get(`${baseURL}`);
     return res.data;
   } catch (error) {
     console.log(error);
@@ -320,7 +323,7 @@ export const getProduct = createAsyncThunk("product/getProduct", async () => {
 // Async thunk to delete a product
 export const deleteProduct = createAsyncThunk("product/deleteProduct", async (id) => {
   try {
-    let res = await axios.delete(`http://localhost:3000/products/${id}`);
+    let res = await axios.delete(`${baseURL}/${id}`);
     return res.data;
   } catch (error) {
     console.log(error);
