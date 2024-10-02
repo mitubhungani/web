@@ -3,10 +3,11 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 
 const Privetroute = ({ children }) => {
-  const isLogin = useSelector((store) => store.users.isLogin);
+  const isLogin = useSelector((store) => store.users.isLoggedIn);
   console.log(isLogin);
 
   const localUser = JSON.parse(localStorage.getItem("user"));
+  console.log("loaclUser", localUser);
 
   if (isLogin || localUser !== null) {
     console.log("user is logged in");

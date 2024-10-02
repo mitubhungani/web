@@ -20,9 +20,8 @@ const ModernNavbar = () => {
   }
 
   useEffect(()=>{
-    const currntUser = auth.currentUser;
+    const currntUser = data.user.user;
     console.log(currntUser);
-    
   },[])
 
   return (
